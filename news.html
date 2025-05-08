@@ -5,15 +5,217 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>云南咖啡热潮涌动：B站数据揭示消费者关注度</title>
     <style>
-        /* 咖啡主题配色方案 */
         :root {
-            --coffee-brown: #6f4e37; /* 咖啡棕色 */
-            --cream-white: #f5f5dc; /* 奶油白色 */
-            --beige: #f5f5f5; /* 米色 */
-            --dark-brown: #4a3a2a; /* 深咖啡色 */
+            --coffee-brown: #6f4e37;
+            --cream-white: #f5f5dc;
+            --beige: #f5f5f5;
+            --dark-brown: #4a3a2a;
         }
 
-        /* ... 保持原有样式不变 ... */
+        body {
+            font-family: 'Georgia', 'KaiTi', serif;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: 
+                linear-gradient(135deg, #f8f5f0 25%, transparent 25%) -50px 0,
+                linear-gradient(225deg, #f8f5f0 25%, transparent 25%) -50px 0,
+                linear-gradient(315deg, #f8f5f0 25%, transparent 25%),
+                linear-gradient(45deg, #f8f5f0 25%, transparent 25%);
+            background-size: 100px 100px;
+            background-color: var(--beige);
+            animation: bg-animation 120s linear infinite;
+            color: var(--dark-brown);
+            min-height: 100vh;
+        }
+
+        @keyframes bg-animation {
+            to { background-position: 1000px 2000px; }
+        }
+
+        h1, h2, h3 {
+            color: var(--coffee-brown);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            text-align: center;
+            margin: 60px 0;
+            font-family: 'KaiTi', cursive;
+            border-bottom: 4px double var(--coffee-brown);
+            padding: 20px;
+            text-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        h1::before,
+        h1::after {
+            content: "☕";
+            font-size: 1.2em;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        h1::before { left: 20px; }
+        h1::after { right: 20px; }
+
+        h2 {
+            font-size: 1.8em;
+            margin: 40px 0;
+            border-left: 6px solid var(--coffee-brown);
+            padding-left: 20px;
+            background: linear-gradient(to right, rgba(255,255,255,0.8) 70%, transparent);
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--coffee-brown);
+            margin: 30px 0 20px;
+            padding: 8px 15px;
+            background: rgba(255,255,255,0.9);
+            display: inline-block;
+            border-radius: 5px;
+        }
+
+        p {
+            margin: 25px 0;
+            font-size: 1.1em;
+            line-height: 1.9;
+            text-indent: 2em;
+            position: relative;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 8px;
+        }
+
+        .highlight {
+            background: linear-gradient(to right, var(--cream-white), #fff);
+            padding: 4px 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+            font-weight: 600;
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        .content-container {
+            background: rgba(255,255,255,0.95);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        #back-to-top {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            padding: 15px 25px;
+            font-size: 16px;
+            background: var(--coffee-brown);
+            border-radius: 30px;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        #back-to-top:hover {
+            background: var(--dark-brown);
+            transform: translateY(-2px);
+        }
+
+        .coffee-quote {
+            position: relative;
+            padding: 40px 60px;
+            margin: 40px 0;
+            background: var(--coffee-brown);
+            color: white;
+            border-radius: 15px;
+            font-style: italic;
+            line-height: 1.8;
+            isolation: isolate;
+            overflow: hidden;
+        }
+
+        .coffee-quote::before,
+        .coffee-quote::after {
+            content: "“";
+            font-family: '楷体', cursive;
+            font-size: 4em;
+            position: absolute;
+            color: rgba(255,255,255,0.2);
+            z-index: -1;
+        }
+
+        .coffee-quote::before {
+            top: -20px;
+            left: 10px;
+        }
+
+        .coffee-quote::after {
+            content: "”";
+            right: 20px;
+            bottom: -40px;
+        }
+
+        .coffee-quote p::before {
+            content: "—— " attr(data-source);
+            font-size: 0.9em;
+            position: absolute;
+            right: 30px;
+            bottom: 15px;
+            color: rgba(255,255,255,0.7);
+            font-style: normal;
+        }
+
+        .image-caption {
+            text-align: center;
+            font-size: 0.95em;
+            color: var(--dark-brown);
+            margin: -15px 0 25px;
+            font-style: italic;
+            position: relative;
+            z-index: 2;
+        }
+
+        .chart-explanation {
+            background: rgba(255,255,255,0.9);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 4px solid var(--coffee-brown);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-explanation::before {
+            content: "📊";
+            position: absolute;
+            right: 15px;
+            bottom: 10px;
+            font-size: 1.5em;
+            color: var(--coffee-brown);
+            opacity: 0.3;
+        }
+
+        /* 模拟咖啡渍装饰 */
+        .coffee-quote::after {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 30%, transparent 70%);
+            transform: rotate(45deg);
+            top: -50px;
+            right: -50px;
+            z-index: -1;
+        }
     </style>
 </head>
 <body>
@@ -22,7 +224,6 @@
     <div class="content-container">
         <h1>🌱 云南咖啡热潮 ☕<br>B站数据解码年轻群体关注</h1>
 
-        <!-- 修改后的第一个引语 -->
         <div class="coffee-quote" data-source="习近平总书记">
             <p>云南咖啡还是代表着中国的，现在国外也是受欢迎的。</p>
         </div>
@@ -33,22 +234,16 @@
         <h2>数据解码：B站青年眼中的云南咖啡</h2>
 
         <h3>高频词汇，勾勒云南咖啡印象</h3>
-        <img src="https://raw.githubusercontent.com/liqian222/yunnan-coffee-data-news/main/word_frequency_bar_chart.png" alt="词频统计结果的柱状图">
-        <p class="image-caption">图1：B站云南咖啡视频高频词汇统计</p>
         <div class="chart-explanation">
             <p><span class="highlight">图1</span> 展示了B站关于云南咖啡视频的高频词汇统计结果。我们可以看到，“风味”、“独特”、“性价比”等词汇排名靠前，这反映了年轻群体对云南咖啡最直观的印象。他们关注云南咖啡的独特风味，也注重其性价比，这为云南咖啡的市场定位和产品开发提供了重要参考。</p>
         </div>
 
         <h3>TF-IDF关键词，揭示深度关注点</h3>
-        <img src="https://raw.githubusercontent.com/liqian222/yunnan-coffee-data-news/main/tfidf_bar_chart.png" alt="TF-IDF关键词提取结果的词频统计柱状图">
-        <p class="image-caption">图2：B站云南咖啡视频TF-IDF关键词提取</p>
         <div class="chart-explanation">
             <p><span class="highlight">图2</span> 展示了TF-IDF关键词提取结果，这些关键词揭示了年轻群体对云南咖啡更深层次的关注点。与高频词汇相比，“精品化”、“产区”、“产业链”等词汇的出现，表明年轻人不再满足于表面的认知，而是开始关注云南咖啡的品质提升、产区特色以及产业发展。这预示着云南咖啡未来需要更加注重品质打造和产业链升级，以满足年轻消费者日益增长的需求。</p>
         </div>
 
         <h3>词云图，视觉化呈现热点</h3>
-        <img src="https://raw.githubusercontent.com/liqian222/yunnan-coffee-data-news/main/word_cloud.png" alt="词云图">
-        <p class="image-caption">图3：B站云南咖啡视频词云图</p>
         <div class="chart-explanation">
             <p><span class="highlight">图3</span> 是B站云南咖啡视频的词云图，它以更直观的方式展现了用户讨论的热点。“云南小粒咖啡”、“普洱咖啡”、“咖啡庄园”等词汇的突出显示，反映了年轻人对云南咖啡具体品种和产地的浓厚兴趣。这为云南咖啡的品牌推广和产地营销提供了方向，可以重点打造具有地域特色的咖啡品牌，吸引年轻消费者的关注。</p>
         </div>
@@ -56,14 +251,12 @@
         <h2>口碑两极：爱之深，责之切</h2>
         <p>云南咖啡在B站也引发了热烈的讨论，口碑呈现两极分化。一部分网友盛赞云南咖啡“<span class="highlight">浓而不苦，香而不烈，略带果酸</span>”的独特风味，认为其是“<span class="highlight">国货之光</span>”。</p>
 
-        <!-- 修改后的第二个引语 -->
         <div class="coffee-quote" data-source="新华网报道">
             <p>云南咖啡的精品化之路，正在改写中国咖啡的产业格局，其独特的风味和不断提升的品质，正受到越来越多消费者的认可。</p>
         </div>
 
         <p>然而，也有网友直言不讳地指出云南咖啡的不足。“<span class="highlight">部分云南咖啡存在过度发酵，香精味过重</span>”，他们期待云南咖啡在风味细节上能更上一层楼，真正比肩世界一流产区。</p>
 
-        <!-- 新增的第三个引语 -->
         <div class="coffee-quote" data-source="《云南咖啡产业发展报告》">
             <p>云南咖啡的品质提升有目共睹，尤其是在精品化、精深加工方面取得了显著进展，这为云南咖啡的未来发展奠定了坚实基础。</p>
         </div>
@@ -75,21 +268,16 @@
         <p>B站数据揭示了云南咖啡在年轻群体中的高关注度，也折射出云南咖啡产业蓬勃发展的现状。从数据洞察到口碑声音，我们看到了云南咖啡的潜力与挑战。相信在政策助力、产业升级和消费者认可的多重推动下，云南咖啡必将迎来更加美好的未来，为中国咖啡市场，也为世界咖啡版图，增添一抹独特的云南风味。</p>
     </div>
 
-    <!-- 保持原有脚本不变 -->
     <script>
         window.onscroll = function() {scrollFunction()};
 
         function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById("back-to-top").style.display = "block";
-            } else {
-                document.getElementById("back-to-top").style.display = "none";
-            }
+            document.getElementById("back-to-top").style.display = 
+                window.pageYOffset > 300 ? "block" : "none";
         }
 
         function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
     </script>
 </body>
