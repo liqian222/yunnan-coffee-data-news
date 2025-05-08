@@ -10,6 +10,8 @@
             --cream-white: #f5f5dc;
             --beige: #f5f5f5;
             --dark-brown: #4a3a2a;
+            --green-accent: #7a9b76;
+            --gold-accent: #d4af37;
         }
 
         body {
@@ -35,26 +37,6 @@
             to { background-position: 1000px 2000px; }
         }
 
-        /* 自然装饰元素 */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 20%;
-            right: -50px;
-            width: 200px;
-            height: 300px;
-            background: url('https://raw.githubusercontent.com/liqian222/yunnan-coffee-data-news/main/coffee-plant-icon.png') no-repeat;
-            background-size: contain;
-            opacity: 0.15;
-            z-index: -1;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(5deg); }
-            50% { transform: translateY(-15px) rotate(-5deg); }
-        }
-
         h1, h2, h3 {
             color: var(--coffee-brown);
             font-weight: bold;
@@ -70,6 +52,8 @@
             padding: 20px;
             text-shadow: 2px 2px 3px rgba(0,0,0,0.1);
             position: relative;
+            background: linear-gradient(to right, var(--beige), #fff);
+            border-radius: 15px;
         }
 
         h1::before,
@@ -79,6 +63,8 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
+            color: var(--gold-accent);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
 
         h1::before { left: 20px; }
@@ -89,7 +75,8 @@
             margin: 40px 0;
             border-left: 6px solid var(--coffee-brown);
             padding-left: 20px;
-            background: linear-gradient(to right, rgba(255,255,255,0.8) 70%, transparent);
+            background: linear-gradient(to right, rgba(255,255,255,0.9) 70%, transparent);
+            border-radius: 0 5px 5px 0;
         }
 
         h3 {
@@ -100,6 +87,7 @@
             background: rgba(255,255,255,0.9);
             display: inline-block;
             border-radius: 5px;
+            border-bottom: 3px solid var(--green-accent);
         }
 
         img {
@@ -110,6 +98,8 @@
             border-radius: 15px;
             box-shadow: 5px 5px 20px rgba(0,0,0,0.15);
             transition: transform 0.3s ease;
+            aspect-ratio: 16/9;
+            object-fit: cover;
         }
 
         img:hover {
@@ -122,19 +112,21 @@
             line-height: 1.9;
             text-indent: 2em;
             position: relative;
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.7);
-            border-radius: 8px;
+            padding: 15px 25px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 10px;
+            border-left: 3px solid var(--gold-accent);
         }
 
         .highlight {
-            background: linear-gradient(to right, var(--cream-white), #fff);
+            background: linear-gradient(120deg, var(--cream-white), #fff);
             padding: 4px 10px;
             border-radius: 5px;
             box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
             font-weight: 600;
             display: inline-block;
             margin: 5px 0;
+            color: var(--coffee-brown);
         }
 
         .content-container {
@@ -159,24 +151,25 @@
             box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
             cursor: pointer;
+            border: 2px solid var(--gold-accent);
         }
 
         #back-to-top:hover {
-            background: var(--dark-brown);
+            background: var(--gold-accent);
             transform: translateY(-2px);
         }
 
-        /* 优化后的引语样式 */
         .coffee-quote {
             position: relative;
-            padding: 25px 30px;
+            padding: 20px 25px;
             margin: 30px 0;
-            background: rgba(111,78,55,0.08);
-            border-left: 4px solid var(--coffee-brown);
+            background: linear-gradient(135deg, rgba(111,78,55,0.05) 0%, rgba(255,255,255,0) 100%);
+            border-left: 4px solid var(--green-accent);
             border-radius: 8px;
             font-style: italic;
             line-height: 1.8;
             overflow: hidden;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.05);
         }
 
         .coffee-quote::before {
@@ -186,7 +179,7 @@
             position: absolute;
             left: 10px;
             top: 0;
-            color: var(--coffee-brown);
+            color: var(--green-accent);
             opacity: 0.3;
             line-height: 1;
         }
@@ -196,49 +189,54 @@
             margin: 0;
             padding: 0 0 0 30px;
             position: relative;
+            color: var(--dark-brown);
         }
 
         .coffee-quote p::after {
             content: "—— " attr(data-source);
             font-size: 0.85em;
             position: absolute;
-            right: 0;
-            bottom: 0;
-            color: var(--dark-brown);
+            right: 15px;
+            bottom: 5px;
+            color: var(--coffee-brown);
             font-style: normal;
-            background: rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.8);
             padding: 2px 8px;
             border-radius: 4px;
+            border: 1px solid var(--cream-white);
         }
 
         .image-caption {
             text-align: center;
-            font-size: 0.95em;
+            font-size: 0.85em;
             color: var(--dark-brown);
-            margin: -15px 0 25px;
+            margin: -10px 0 15px;
             font-style: italic;
             position: relative;
             z-index: 2;
+            opacity: 0.8;
+            letter-spacing: 0.5px;
         }
 
         .chart-explanation {
             background: rgba(255,255,255,0.9);
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
-            margin: 25px 0;
-            border-left: 4px solid var(--coffee-brown);
+            margin: 20px 0;
+            border-left: 4px solid var(--green-accent);
             position: relative;
             overflow: hidden;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
         }
 
         .chart-explanation::before {
             content: "📊";
             position: absolute;
-            right: 15px;
-            bottom: 10px;
-            font-size: 1.5em;
-            color: var(--coffee-brown);
-            opacity: 0.3;
+            right: 10px;
+            bottom: 5px;
+            font-size: 1.3em;
+            color: var(--green-accent);
+            opacity: 0.5;
         }
     </style>
 </head>
