@@ -132,7 +132,7 @@
             padding-left: 30px;
         }
         .coffee-quote p::before {
-            content: "—— 云南咖啡语录";
+            content: "—— B站用户 咖啡品鉴师老李";
             font-size: 0.9em;
             position: absolute;
             right: 10px;
@@ -147,6 +147,15 @@
             margin-bottom: 25px;
             font-style: italic;
             line-height: 1.4;
+        }
+        .chart-explanation {
+            background-color: var(--cream-white);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 0.95em;
+            line-height: 1.6;
+            border-left: 3px solid var(--coffee-brown);
         }
     </style>
 </head>
@@ -167,24 +176,33 @@
 
         <h3>高频词汇，勾勒云南咖啡印象</h3>
         <img src="https://raw.githubusercontent.com/liqian222/yunnan-coffee-data-news/main/word_frequency_bar_chart.png" alt="词频统计结果的柱状图">
-        <p class="image-caption">图1：B站关于云南咖啡视频的高频词汇统计柱状图，反映了年轻人对云南咖啡风味、独特性和性价比的关注。</p>
+        <p class="image-caption">图1：B站云南咖啡视频高频词汇统计</p>
+        <div class="chart-explanation">
+            <p><span class="highlight">图1</span> 展示了B站关于云南咖啡视频的高频词汇统计结果。我们可以看到，“风味”、“独特”、“性价比”等词汇排名靠前，这反映了年轻群体对云南咖啡最直观的印象。他们关注云南咖啡的独特风味，也注重其性价比，这为云南咖啡的市场定位和产品开发提供了重要参考。</p>
+        </div>
 
         <h3>TF-IDF关键词，揭示深度关注点</h3>
         <img src="https://raw.githubusercontent.com/liqian222/yunnan-coffee-data-news/main/tfidf_bar_chart.png" alt="TF-IDF关键词提取结果的词频统计柱状图">
-        <p class="image-caption">图2：TF-IDF关键词提取结果柱状图，揭示了年轻人对云南咖啡精品化、产区特色和产业链发展的深度关注。</p>
+        <p class="image-caption">图2：B站云南咖啡视频TF-IDF关键词提取</p>
+        <div class="chart-explanation">
+            <p><span class="highlight">图2</span> 展示了TF-IDF关键词提取结果，这些关键词揭示了年轻群体对云南咖啡更深层次的关注点。与高频词汇相比，“精品化”、“产区”、“产业链”等词汇的出现，表明年轻人不再满足于表面的认知，而是开始关注云南咖啡的品质提升、产区特色以及产业发展。这预示着云南咖啡未来需要更加注重品质打造和产业链升级，以满足年轻消费者日益增长的需求。</p>
+        </div>
 
         <h3>词云图，视觉化呈现热点</h3>
         <img src="https://raw.githubusercontent.com/liqian222/yunnan-coffee-data-news/main/word_cloud.png" alt="词云图">
-        <p class="image-caption">图3：云南咖啡相关视频的词云图，直观展现了B站用户讨论的热点，包括云南小粒咖啡、普洱咖啡和咖啡庄园等。</p>
+        <p class="image-caption">图3：B站云南咖啡视频词云图</p>
+        <div class="chart-explanation">
+            <p><span class="highlight">图3</span> 是B站云南咖啡视频的词云图，它以更直观的方式展现了用户讨论的热点。“云南小粒咖啡”、“普洱咖啡”、“咖啡庄园”等词汇的突出显示，反映了年轻人对云南咖啡具体品种和产地的浓厚兴趣。这为云南咖啡的品牌推广和产地营销提供了方向，可以重点打造具有地域特色的咖啡品牌，吸引年轻消费者的关注。</p>
+        </div>
 
         <h2>口碑两极：爱之深，责之切</h2>
         <p>云南咖啡在B站也引发了热烈的讨论，口碑呈现两极分化。一部分网友盛赞云南咖啡“<span class="highlight">浓而不苦，香而不烈，略带果酸</span>”的独特风味，认为其是“<span class="highlight">国货之光</span>”。</p>
         <div class="coffee-quote">
-            <p>“第一次喝到云南小粒咖啡，就被惊艳到了！完全不输进口咖啡！” —— B站用户 咖啡爱好者小王</p>
+            <p>“第一次喝到云南小粒咖啡，就被惊艳到了！完全不输进口咖啡！”</p>
         </div>
         <p>然而，也有网友直言不讳地指出云南咖啡的不足。“<span class="highlight">部分云南咖啡存在过度发酵，香精味过重</span>”，他们期待云南咖啡在风味细节上能更上一层楼，真正比肩世界一流产区。</p>
         <div class="coffee-quote">
-            <p>“希望云南咖啡能少一些‘科技与狠活’，多一些自然纯粹。” —— B站用户 咖啡品鉴师老李</p>
+            <p>“希望云南咖啡能少一些‘科技与狠活’，多一些自然纯粹。”</p>
         </div>
 
         <h2>政策助力，未来可期</h2>
