@@ -6,81 +6,147 @@
     <title>云南咖啡热潮涌动：B站数据揭示消费者关注度</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 更现代的无衬线字体 */
+            line-height: 1.8;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
-            background-color: #f4f4f4;
-            color: #333;
+            padding: 30px;
+            background-color: #f8f9fa; /* 更柔和的背景色 */
+            color: #212529;
+            background-image: linear-gradient(to bottom, #e9ecef 0%, #f8f9fa 100%); /* 添加背景渐变 */
         }
         h1, h2, h3 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 5px;
+            color: #1e7e34; /* 更鲜明的标题颜色 */
+            border-bottom: 3px solid #1e7e34; /* 更粗的标题下划线 */
+            padding-bottom: 8px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* 添加标题文字阴影 */
         }
         h1 {
             text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 30px;
+            font-size: 2.8em;
+            margin-bottom: 40px;
+            font-family: 'Georgia', serif; /* 标题使用衬线字体，更显正式 */
+            border-bottom: 4px double #1e7e34; /* 标题下划线改为双线 */
+            padding-bottom: 15px;
         }
         h2 {
-            font-size: 1.8em;
-            margin-top: 25px;
-            margin-bottom: 15px;
+            font-size: 2.0em;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #1e7e34; /* 保持与标题一致的下划线 */
+            padding-bottom: 10px;
         }
         h3 {
-            font-size: 1.4em;
-            margin-top: 20px;
-            margin-bottom: 10px;
+            font-size: 1.6em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #2a9d8f; /* 三级标题使用不同颜色，增加层次感 */
+            border-bottom: 2px solid #2a9d8f; /* 三级标题下划线颜色也改变 */
+            padding-bottom: 8px;
         }
         img {
             max-width: 100%;
             height: auto;
-            margin: 20px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            margin: 25px 0;
+            border: 3px solid #fff; /* 图片边框加粗 */
+            border-radius: 8px; /* 图片圆角加大 */
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.15); /* 图片阴影加深 */
+            transition: transform 0.2s ease; /* 添加图片悬停动画效果 */
+        }
+        img:hover {
+            transform: scale(1.02); /* 图片悬停时略微放大 */
         }
         p {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-align: justify;
+            font-size: 1.05em; /* 略微增大正文字体 */
+            line-height: 1.9; /* 增加行高，提升可读性 */
         }
         .highlight {
-            background-color: #fff59d;
-            padding: 2px 5px;
-            border-radius: 3px;
+            background-color: #fff3cd; /* 更柔和的高亮背景色 */
+            padding: 3px 7px;
+            border-radius: 5px;
             font-weight: bold;
+            display: inline-block; /* 使高亮背景更好地包裹文字 */
+            margin: 2px 0;
+        }
+        /* 添加容器样式，使内容区域有内边距和背景色，更突出内容 */
+        .content-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1); /* 添加容器阴影 */
+        }
+        /* 添加返回顶部按钮样式 */
+        #back-to-top {
+            display: none; /* 默认隐藏 */
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #1e7e34;
+            color: white;
+            cursor: pointer;
+            padding: 12px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        #back-to-top:hover {
+            background-color: #2a9d8f;
         }
     </style>
 </head>
 <body>
+    <button onclick="topFunction()" id="back-to-top" title="返回顶部">↑ 顶部</button>
 
-    <h1>云南咖啡热潮涌动：B站数据揭示消费者关注度</h1>
+    <div class="content-container"> <!-- 添加内容容器 -->
+        <h1>云南咖啡热潮涌动：B站数据揭示消费者关注度</h1>
 
-    <h2>引言</h2>
-    <p>云南，这片位于中国西南的边陲之地，不仅以其壮丽的自然风光和丰富的民族文化著称，还孕育着一种独特的“黑色黄金”——云南咖啡。近年来，随着国内咖啡市场的蓬勃发展，云南咖啡逐渐崭露头角，成为消费者关注的焦点。今年，习近平总书记在云南丽江考察时，也特意提到了云南咖啡，对其发展给予了高度关注。为了深入了解云南咖啡在年轻群体中的影响力和关注度，我们爬取了B站上关于“云南咖啡”的相关数据，并结合市场趋势和消费者评价，为您呈现这则数据新闻。</p>
+        <h2>引言</h2>
+        <p>云南，这片位于中国西南的边陲之地，不仅以其壮丽的自然风光和丰富的民族文化著称，还孕育着一种独特的“黑色黄金”——云南咖啡。近年来，随着国内咖啡市场的蓬勃发展，云南咖啡逐渐崭露头角，成为消费者关注的焦点。今年，习近平总书记在云南丽江考察时，也特意提到了云南咖啡，对其发展给予了高度关注。为了深入了解云南咖啡在年轻群体中的影响力和关注度，我们爬取了B站上关于“云南咖啡”的相关数据，并结合市场趋势和消费者评价，为您呈现这则数据新闻。</p>
 
-    <h2>数据分析发现</h2>
+        <h2>数据分析发现</h2>
 
-    <h3>高频词汇分析</h3>
-    <img src="word_frequency_bar_chart.png" alt="词频统计结果的柱状图">
+        <h3>高频词汇分析</h3>
+        <!-- 请确保以下图片URL地址中的"liqian222"和仓库名"yunnan-coffee-data-news"与您的实际GitHub用户名和仓库名一致 -->
+        <img src="https://raw.githubusercontent.com/liqian222/yunnan-coffee-data-news/main/word_frequency_bar_chart.png" alt="词频统计结果的柱状图">
 
-    <h3>TF-IDF关键词提取</h3>
-    <img src="tfidf_bar_chart.png" alt="TF-IDF关键词提取结果的词频统计柱状图">
+        <h3>TF-IDF关键词提取</h3>
+        <img src="https://raw.githubusercontent.com/liqian222/yunnan-coffee-data-news/main/tfidf_bar_chart.png" alt="TF-IDF关键词提取结果的词频统计柱状图">
 
-    <h3>词云图展示</h3>
-    <img src="word_cloud.png" alt="词云图">
+        <h3>词云图展示</h3>
+        <img src="https://raw.githubusercontent.com/liqian222/yunnan-coffee-data-news/main/word_cloud.png" alt="词云图">
 
-    <h2>消费者评价</h2>
-    <p>云南咖啡在消费者中的口碑呈现两极分化。一部分消费者认为其风味独特，性价比高，尤其是精品咖啡豆的品质显著提升。他们赞赏云南咖啡“浓而不苦、香而不烈、略带果酸”的特质，认为这是云南咖啡独特的魅力所在。</p>
-    <p>然而，另一部分消费者则认为云南咖啡在风味细节上仍不及国际知名产区，如埃塞俄比亚、耶加雪菲等。他们指出，部分云南咖啡存在过度发酵和香精使用的问题，这影响了咖啡的纯正口感。尽管如此，这些消费者也承认，云南咖啡在近年来取得了显著的进步，尤其是在精品化、精深加工方面。</p>
+        <h2>消费者评价</h2>
+        <p>云南咖啡在消费者中的口碑呈现两极分化。一部分消费者认为其风味独特，性价比高，尤其是精品咖啡豆的品质显著提升。他们赞赏云南咖啡“浓而不苦、香而不烈、略带果酸”的特质，认为这是云南咖啡独特的魅力所在。</p>
+        <p>然而，另一部分消费者则认为云南咖啡在风味细节上仍不及国际知名产区，如埃塞俄比亚、耶加雪菲等。他们指出，部分云南咖啡存在过度发酵和香精使用的问题，这影响了咖啡的纯正口感。尽管如此，这些消费者也承认，云南咖啡在近年来取得了显著的进步，尤其是在精品化、精深加工方面。</p>
 
-    <h2>政策支持与产业发展</h2>
-    <p>云南咖啡产业的崛起离不开政策的强力支持。云南省政府出台了一系列政策措施，推动咖啡产业向精品化、精深加工方向发展。这些政策不仅提升了云南咖啡的品质和附加值，还促进了咖啡产业链的延伸和升级。在政策支持下，云南咖啡产业正在从原料供应向品牌塑造转型，努力提升其在国际市场上的竞争力。</p>
+        <h2>政策支持与产业发展</h2>
+        <p>云南咖啡产业的崛起离不开政策的强力支持。云南省政府出台了一系列政策措施，推动咖啡产业向精品化、精深加工方向发展。这些政策不仅提升了云南咖啡的品质和附加值，还促进了咖啡产业链的延伸和升级。在政策支持下，云南咖啡产业正在从原料供应向品牌塑造转型，努力提升其在国际市场上的竞争力。</p>
 
-    <h2>结论与展望</h2>
-    <p>通过B站数据的分析，我们可以看出云南咖啡在年轻群体中具有较高的关注度。消费者对云南咖啡的品质、口感和产地有着浓厚的兴趣，同时云南咖啡也在国际市场上展现出一定的竞争力。随着政策的持续支持和产业的不断升级，云南咖啡有望在未来实现更大的发展。我们期待云南咖啡能够继续保持其独特的品质和风味，打造出具有中国特色的咖啡品牌，为全球咖啡市场贡献更多的精彩。</p>
+        <h2>结论与展望</h2>
+        <p>通过B站数据的分析，我们可以看出云南咖啡在年轻群体中具有较高的关注度。消费者对云南咖啡的品质、口感和产地有着浓厚的兴趣，同时云南咖啡也在国际市场上展现出一定的竞争力。随着政策的持续支持和产业的不断升级，云南咖啡有望在未来实现更大的发展。我们期待云南咖啡能够继续保持其独特的品质和风味，打造出具有中国特色的咖啡品牌，为全球咖啡市场贡献更多的精彩。</p>
+    </div>
+    <script>
+        // 返回顶部按钮功能
+        window.onscroll = function() {scrollFunction()};
 
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("back-to-top").style.display = "block";
+            } 
+            else {
+                document.getElementById("back-to-top").style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
 </body>
 </html>
