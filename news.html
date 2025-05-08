@@ -12,6 +12,7 @@
             --dark-brown: #4a3a2a;
             --green-accent: #7a9b76;
             --gold-accent: #d4af37;
+            --red-accent: #a85c50;
         }
 
         body {
@@ -31,10 +32,46 @@
             color: var(--dark-brown);
             min-height: 100vh;
             position: relative;
+            overflow-x: hidden;
         }
 
         @keyframes bg-animation {
             to { background-position: 1000px 2000px; }
+        }
+
+        /* 装饰元素 */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 10%;
+            left: -80px;
+            width: 200px;
+            height: 200px;
+            background: url('https://dwz.cn/RByZWRSL') no-repeat;
+            background-size: contain;
+            opacity: 0.15;
+            z-index: -1;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            bottom: 5%;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: url('https://dwz.cn/RByZWRSL') no-repeat;
+            background-size: contain;
+            opacity: 0.1;
+            z-index: -1;
+            transform: rotate(30deg);
+            animation: float 10s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
         }
 
         h1, h2, h3 {
@@ -54,6 +91,7 @@
             position: relative;
             background: linear-gradient(to right, var(--beige), #fff);
             border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
         h1::before,
@@ -77,6 +115,17 @@
             padding-left: 20px;
             background: linear-gradient(to right, rgba(255,255,255,0.9) 70%, transparent);
             border-radius: 0 5px 5px 0;
+            position: relative;
+        }
+
+        h2::before {
+            content: "📌";
+            position: absolute;
+            left: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--green-accent);
+            font-size: 1.2em;
         }
 
         h3 {
@@ -88,6 +137,13 @@
             display: inline-block;
             border-radius: 5px;
             border-bottom: 3px solid var(--green-accent);
+            position: relative;
+        }
+
+        h3::before {
+            content: "▶";
+            color: var(--red-accent);
+            margin-right: 8px;
         }
 
         img {
@@ -98,8 +154,8 @@
             border-radius: 15px;
             box-shadow: 5px 5px 20px rgba(0,0,0,0.15);
             transition: transform 0.3s ease;
-            aspect-ratio: 16/9;
-            object-fit: cover;
+            display: block;
+            position: relative;
         }
 
         img:hover {
@@ -116,6 +172,7 @@
             background: rgba(255,255,255,0.8);
             border-radius: 10px;
             border-left: 3px solid var(--gold-accent);
+            box-shadow: 3px 3px 8px rgba(0,0,0,0.03);
         }
 
         .highlight {
@@ -127,6 +184,19 @@
             display: inline-block;
             margin: 5px 0;
             color: var(--coffee-brown);
+            position: relative;
+        }
+
+        .highlight::after {
+            content: "☕";
+            font-size: 0.8em;
+            color: var(--gold-accent);
+            margin-left: 5px;
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.6;
         }
 
         .content-container {
@@ -152,11 +222,17 @@
             transition: all 0.3s ease;
             cursor: pointer;
             border: 2px solid var(--gold-accent);
+            animation: bounce 2s ease-in-out infinite;
         }
 
         #back-to-top:hover {
             background: var(--gold-accent);
             transform: translateY(-2px);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
         .coffee-quote {
@@ -170,6 +246,7 @@
             line-height: 1.8;
             overflow: hidden;
             box-shadow: 3px 3px 10px rgba(0,0,0,0.05);
+            isolation: isolate;
         }
 
         .coffee-quote::before {
@@ -182,6 +259,7 @@
             color: var(--green-accent);
             opacity: 0.3;
             line-height: 1;
+            z-index: -1;
         }
 
         .coffee-quote p {
@@ -202,6 +280,7 @@
             z-index: 2;
             opacity: 0.8;
             letter-spacing: 0.5px;
+            font-family: 'Georgia', serif;
         }
 
         .chart-explanation {
