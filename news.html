@@ -4,372 +4,286 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>云南咖啡热潮涌动：B站数据揭示消费者关注度</title>
-    <style>
-        :root {
-            --coffee-brown: #6f4e37;
-            --cream-white: #f5f5dc;
-            --beige: #f5f5f5;
-            --dark-brown: #4a3a2a;
-            --green-accent: #7a9b76;
-            --gold-accent: #d4af37;
-            --red-accent: #a85c50;
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            brown: '#6f4e37',
+                            dark: '#4a3a2a',
+                            light: '#a67c52',
+                            cream: '#f5f5dc'
+                        },
+                        accent: {
+                            green: '#7a9b76',
+                            gold: '#d4af37',
+                            red: '#a85c50'
+                        },
+                        neutral: {
+                            beige: '#f5f5f5',
+                            offwhite: '#f8f5f0'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Georgia', 'KaiTi', 'serif'],
+                        cursive: ['KaiTi', 'cursive']
+                    },
+                    backgroundImage: {
+                        'coffee-pattern': "url('https://dwz.cn/RByZWRSL')",
+                    }
+                }
+            }
         }
-
-        body {
-            font-family: 'Georgia', 'KaiTi', serif;
-            line-height: 1.8;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background: 
-                linear-gradient(135deg, #f8f5f0 25%, transparent 25%) -50px 0,
-                linear-gradient(225deg, #f8f5f0 25%, transparent 25%) -50px 0,
-                linear-gradient(315deg, #f8f5f0 25%, transparent 25%),
-                linear-gradient(45deg, #f8f5f0 25%, transparent 25%);
-            background-size: 100px 100px;
-            background-color: var(--beige);
-            animation: bg-animation 120s linear infinite;
-            color: var(--dark-brown);
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        @keyframes bg-animation {
-            to { background-position: 1000px 2000px; }
-        }
-
-        /* 装饰元素 */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 10%;
-            left: -80px;
-            width: 200px;
-            height: 200px;
-            background: url('https://dwz.cn/RByZWRSL') no-repeat;
-            background-size: contain;
-            opacity: 0.15;
-            z-index: -1;
-            animation: float 8s ease-in-out infinite;
-        }
-
-        body::after {
-            content: "";
-            position: fixed;
-            bottom: 5%;
-            right: -50px;
-            width: 150px;
-            height: 150px;
-            background: url('https://dwz.cn/RByZWRSL') no-repeat;
-            background-size: contain;
-            opacity: 0.1;
-            z-index: -1;
-            transform: rotate(30deg);
-            animation: float 10s ease-in-out infinite;
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                contentvisibility: auto;
+            }
+            .float-animation {
+                animation: float 8s ease-in-out infinite;
+            }
+            .bounce-slow {
+                animation: bounce 2s ease-in-out infinite;
+            }
+            .text-shadow {
+                text-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+            }
+            .text-indent-2 {
+                text-indent: 2em;
+            }
+            .bg-coffee-pattern {
+                background-image: 
+                    linear-gradient(135deg, #f8f5f0 25%, transparent 25%) -50px 0,
+                    linear-gradient(225deg, #f8f5f0 25%, transparent 25%) -50px 0,
+                    linear-gradient(315deg, #f8f5f0 25%, transparent 25%),
+                    linear-gradient(45deg, #f8f5f0 25%, transparent 25%);
+                background-size: 100px 100px;
+            }
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(5deg); }
         }
-
-        h1, h2, h3 {
-            color: var(--coffee-brown);
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        h1 {
-            font-size: 2.8em;
-            text-align: center;
-            margin: 60px 0;
-            font-family: 'KaiTi', cursive;
-            border-bottom: 4px double var(--coffee-brown);
-            padding: 20px;
-            text-shadow: 2px 2px 3px rgba(0,0,0,0.1);
-            position: relative;
-            background: linear-gradient(to right, var(--beige), #fff);
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-
-        h1::before,
-        h1::after {
-            content: "☕";
-            font-size: 1.2em;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--gold-accent);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-        }
-
-        h1::before { left: 20px; }
-        h1::after { right: 20px; }
-
-        h2 {
-            font-size: 1.8em;
-            margin: 40px 0;
-            border-left: 6px solid var(--coffee-brown);
-            padding-left: 20px;
-            background: linear-gradient(to right, rgba(255,255,255,0.9) 70%, transparent);
-            border-radius: 0 5px 5px 0;
-            position: relative;
-        }
-
-        h2::before {
-            content: "📌";
-            position: absolute;
-            left: -25px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--green-accent);
-            font-size: 1.2em;
-        }
-
-        h3 {
-            font-size: 1.4em;
-            color: var(--coffee-brown);
-            margin: 30px 0 20px;
-            padding: 8px 15px;
-            background: rgba(255,255,255,0.9);
-            display: inline-block;
-            border-radius: 5px;
-            border-bottom: 3px solid var(--green-accent);
-            position: relative;
-        }
-
-        h3::before {
-            content: "▶";
-            color: var(--red-accent);
-            margin-right: 8px;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            margin: 30px 0;
-            border: 5px solid var(--cream-white);
-            border-radius: 15px;
-            box-shadow: 5px 5px 20px rgba(0,0,0,0.15);
-            transition: transform 0.3s ease;
-            display: block;
-            position: relative;
-        }
-
-        img:hover {
-            transform: scale(1.02) rotate(1deg);
-        }
-
-        p {
-            margin: 25px 0;
-            font-size: 1.1em;
-            line-height: 1.9;
-            text-indent: 2em;
-            position: relative;
-            padding: 15px 25px;
-            background: rgba(255,255,255,0.8);
-            border-radius: 10px;
-            border-left: 3px solid var(--gold-accent);
-            box-shadow: 3px 3px 8px rgba(0,0,0,0.03);
-        }
-
-        .highlight {
-            background: linear-gradient(120deg, var(--cream-white), #fff);
-            padding: 4px 10px;
-            border-radius: 5px;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
-            font-weight: 600;
-            display: inline-block;
-            margin: 5px 0;
-            color: var(--coffee-brown);
-            position: relative;
-        }
-
-        .highlight::after {
-            content: "☕";
-            font-size: 0.8em;
-            color: var(--gold-accent);
-            margin-left: 5px;
-            position: absolute;
-            right: -20px;
-            top: 50%;
-            transform: translateY(-50%);
-            opacity: 0.6;
-        }
-
-        .content-container {
-            background: rgba(255,255,255,0.95);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 2;
-        }
-
-        #back-to-top {
-            display: none;
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            padding: 15px 25px;
-            font-size: 16px;
-            background: var(--coffee-brown);
-            border-radius: 30px;
-            box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 2px solid var(--gold-accent);
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        #back-to-top:hover {
-            background: var(--gold-accent);
-            transform: translateY(-2px);
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-        .coffee-quote {
-            position: relative;
-            padding: 20px 25px;
-            margin: 30px 0;
-            background: linear-gradient(135deg, rgba(111,78,55,0.05) 0%, rgba(255,255,255,0) 100%);
-            border-left: 4px solid var(--green-accent);
-            border-radius: 8px;
-            font-style: italic;
-            line-height: 1.8;
-            overflow: hidden;
-            box-shadow: 3px 3px 10px rgba(0,0,0,0.05);
-            isolation: isolate;
-        }
-
-        .coffee-quote::before {
-            content: "“";
-            font-family: '楷体', cursive;
-            font-size: 3em;
-            position: absolute;
-            left: 10px;
-            top: 0;
-            color: var(--green-accent);
-            opacity: 0.3;
-            line-height: 1;
-            z-index: -1;
-        }
-
-        .coffee-quote p {
-            text-indent: 0;
-            margin: 0;
-            padding: 0 0 0 30px;
-            position: relative;
-            color: var(--dark-brown);
-        }
-
-        .image-caption {
-            text-align: center;
-            font-size: 0.85em;
-            color: var(--dark-brown);
-            margin: -10px 0 15px;
-            font-style: italic;
-            position: relative;
-            z-index: 2;
-            opacity: 0.8;
-            letter-spacing: 0.5px;
-            font-family: 'Georgia', serif;
-        }
-
-        .chart-explanation {
-            background: rgba(255,255,255,0.9);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 20px 0;
-            border-left: 4px solid var(--green-accent);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .chart-explanation::before {
-            content: "📊";
-            position: absolute;
-            right: 10px;
-            bottom: 5px;
-            font-size: 1.3em;
-            color: var(--green-accent);
-            opacity: 0.5;
-        }
     </style>
 </head>
-<body>
-    <button onclick="topFunction()" id="back-to-top" title="返回顶部">↑ 顶部</button>
+<body class="font-serif bg-neutral-beige bg-coffee-pattern bg-fixed min-h-screen">
+    <!-- 装饰元素 -->
+    <div class="fixed top-1/4 -left-20 w-40 h-40 opacity-15 float-animation bg-coffee-pattern bg-contain bg-no-repeat"></div>
+    <div class="fixed bottom-1/4 -right-16 w-32 h-32 opacity-10 float-animation bg-coffee-pattern bg-contain bg-no-repeat rotate-12" style="animation-delay: 2s"></div>
 
-    <div class="content-container">
-        <h1>🌱 云南咖啡热潮 ☕<br>B站数据解码年轻群体关注</h1>
+    <button id="back-to-top" class="fixed bottom-10 right-10 bg-coffee-brown text-white px-6 py-3 rounded-full shadow-lg border-2 border-accent-gold opacity-0 invisible transition-all duration-300 z-50 bounce-slow hover:bg-accent-gold hover:scale-105">
+        <i class="fa fa-arrow-up"></i> 顶部
+    </button>
 
-        <div class="coffee-quote">
-            <p>云南咖啡还是代表着中国的，现在国外也是受欢迎的。</p>
+    <div class="container mx-auto px-4 py-12 md:py-20 max-w-4xl">
+        <div class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden">
+            <!-- 文章头部 -->
+            <header class="relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-coffee-brown/20 to-transparent"></div>
+                <div class="relative p-8 md:p-12 text-center">
+                    <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-cursive font-bold text-coffee-brown text-shadow mb-6 relative inline-block">
+                        🌱 云南咖啡热潮 ☕<br>
+                        <span class="text-[clamp(1.2rem,3vw,1.8rem)] font-serif font-normal mt-2 block">B站数据解码年轻群体关注</span>
+                    </h1>
+                    <div class="w-24 h-1 bg-accent-gold mx-auto mb-8"></div>
+                </div>
+            </header>
+
+            <!-- 文章内容 -->
+            <main class="p-6 md:p-10">
+                <blockquote class="bg-gradient-to-r from-coffee-brown/5 to-transparent border-l-4 border-accent-green rounded-lg p-6 mb-10 relative overflow-hidden">
+                    <p class="text-coffee-dark italic text-lg">云南咖啡还是代表着中国的，现在国外也是受欢迎的。</p>
+                    <div class="absolute -top-4 -right-4 text-6xl text-accent-green/20">"</div>
+                </blockquote>
+
+                <section class="mb-16">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-coffee-brown mb-6 pl-4 border-l-6 border-coffee-brown relative">
+                        <i class="fa fa-map-marker text-accent-green absolute -left-6 top-1/2 transform -translate-y-1/2"></i>
+                        引言：当云南咖啡遇见Z世代
+                    </h2>
+                    <p class="text-indent-2 text-coffee-dark text-lg leading-relaxed bg-white/80 rounded-lg p-6 border-l-3 border-accent-gold shadow-sm">
+                        云南，这片位于云贵高原的土地，以其得天独厚的自然条件，孕育了风味独特的云南咖啡。近年来，云南咖啡异军突起，成为咖啡界的新宠。从总书记的关注到B站年轻人的热议，云南咖啡正经历着一场前所未有的“破圈”之旅。本文将透过B站数据，为您解读云南咖啡在年轻群体中的关注度，探寻其背后的故事。
+                    </p>
+                </section>
+
+                <section class="mb-16">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-coffee-brown mb-6 pl-4 border-l-6 border-coffee-brown relative">
+                        <i class="fa fa-bar-chart text-accent-green absolute -left-6 top-1/2 transform -translate-y-1/2"></i>
+                        数据解码：B站青年眼中的云南咖啡
+                    </h2>
+
+                    <div class="mb-10">
+                        <h3 class="text-[clamp(1.2rem,2.5vw,1.6rem)] font-bold text-coffee-brown mb-4 inline-block bg-white/90 rounded-lg px-4 py-2 border-b-3 border-accent-green">
+                            <i class="fa fa-tags text-accent-red mr-2"></i>高频词汇，勾勒云南咖啡印象
+                        </h3>
+                        <div class="relative overflow-hidden rounded-xl shadow-lg group">
+                            <img src="https://raw.githubusercontent.com/liqian222/yunnan-coffee-data-news/main/word_frequency_bar_chart.png" alt="词频统计结果的柱状图" class="w-full h-auto transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                <p class="text-white p-6">图1：B站云南咖啡视频高频词汇统计</p>
+                            </div>
+                        </div>
+                        <div class="bg-white/90 rounded-lg p-6 border-l-4 border-accent-green mt-4 relative overflow-hidden">
+                            <p class="text-coffee-dark">
+                                <span class="bg-gradient-to-r from-coffee-cream to-white inline-block px-3 py-1 rounded-md font-semibold text-coffee-brown shadow-sm">图1</span> 
+                                展示了B站关于云南咖啡视频的高频词汇统计结果。我们可以看到，"风味"、"独特"、"性价比"等词汇排名靠前，这反映了年轻群体对云南咖啡最直观的印象。他们关注云南咖啡的独特风味，也注重其性价比，这为云南咖啡的市场定位和产品开发提供了重要参考。
+                            </p>
+                            <i class="fa fa-pie-chart absolute bottom-4 right-4 text-accent-green/50 text-2xl"></i>
+                        </div>
+                    </div>
+
+                    <div class="mb-10">
+                        <h3 class="text-[clamp(1.2rem,2.5vw,1.6rem)] font-bold text-coffee-brown mb-4 inline-block bg-white/90 rounded-lg px-4 py-2 border-b-3 border-accent-green">
+                            <i class="fa fa-search text-accent-red mr-2"></i>TF-IDF关键词，揭示深度关注点
+                        </h3>
+                        <div class="relative overflow-hidden rounded-xl shadow-lg group">
+                            <img src="https://raw.githubusercontent.com/liqian222/yunnan-coffee-data-news/main/tfidf_bar_chart.png" alt="TF-IDF关键词提取结果的词频统计柱状图" class="w-full h-auto transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                <p class="text-white p-6">图2：B站云南咖啡视频TF-IDF关键词提取</p>
+                            </div>
+                        </div>
+                        <div class="bg-white/90 rounded-lg p-6 border-l-4 border-accent-green mt-4 relative overflow-hidden">
+                            <p class="text-coffee-dark">
+                                <span class="bg-gradient-to-r from-coffee-cream to-white inline-block px-3 py-1 rounded-md font-semibold text-coffee-brown shadow-sm">图2</span> 
+                                展示了TF-IDF关键词提取结果，这些关键词揭示了年轻群体对云南咖啡更深层次的关注点。与高频词汇相比，"精品化"、"产区"、"产业链"等词汇的出现，表明年轻人不再满足于表面的认知，而是开始关注云南咖啡的品质提升、产区特色以及产业发展。这预示着云南咖啡未来需要更加注重品质打造和产业链升级，以满足年轻消费者日益增长的需求。
+                            </p>
+                            <i class="fa fa-line-chart absolute bottom-4 right-4 text-accent-green/50 text-2xl"></i>
+                        </div>
+                    </div>
+
+                    <div class="mb-10">
+                        <h3 class="text-[clamp(1.2rem,2.5vw,1.6rem)] font-bold text-coffee-brown mb-4 inline-block bg-white/90 rounded-lg px-4 py-2 border-b-3 border-accent-green">
+                            <i class="fa fa-cloud text-accent-red mr-2"></i>词云图，视觉化呈现热点
+                        </h3>
+                        <div class="relative overflow-hidden rounded-xl shadow-lg group">
+                            <img src="https://raw.githubusercontent.com/liqian222/yunnan-coffee-data-news/main/word_cloud.png" alt="词云图" class="w-full h-auto transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                <p class="text-white p-6">图3：B站云南咖啡视频词云图</p>
+                            </div>
+                        </div>
+                        <div class="bg-white/90 rounded-lg p-6 border-l-4 border-accent-green mt-4 relative overflow-hidden">
+                            <p class="text-coffee-dark">
+                                <span class="bg-gradient-to-r from-coffee-cream to-white inline-block px-3 py-1 rounded-md font-semibold text-coffee-brown shadow-sm">图3</span> 
+                                是B站云南咖啡视频的词云图，它以更直观的方式展现了用户讨论的热点。"云南小粒咖啡"、"普洱咖啡"、"咖啡庄园"等词汇的突出显示，反映了年轻人对云南咖啡具体品种和产地的浓厚兴趣。这为云南咖啡的品牌推广和产地营销提供了方向，可以重点打造具有地域特色的咖啡品牌，吸引年轻消费者的关注。
+                            </p>
+                            <i class="fa fa-tasks absolute bottom-4 right-4 text-accent-green/50 text-2xl"></i>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mb-16">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-coffee-brown mb-6 pl-4 border-l-6 border-coffee-brown relative">
+                        <i class="fa fa-comments text-accent-green absolute -left-6 top-1/2 transform -translate-y-1/2"></i>
+                        口碑两极：爱之深，责之切
+                    </h2>
+                    <p class="text-indent-2 text-coffee-dark text-lg leading-relaxed bg-white/80 rounded-lg p-6 border-l-3 border-accent-gold shadow-sm">
+                        云南咖啡在B站引发了热烈讨论，口碑呈现两极分化。正面评价集中于其独特风味，如网友评价"浓而不苦，香而不烈，略带果酸"，认为其是"国货之光"。负面评价则指出部分产品存在过度发酵、香精味过重等问题，期待在风味细节上更上层楼。这种两极评价恰恰反映了消费者对云南咖啡的高关注度和期待值。
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                        <blockquote class="bg-gradient-to-r from-coffee-brown/5 to-transparent border-l-4 border-accent-green rounded-lg p-6 relative overflow-hidden">
+                            <p class="text-coffee-dark italic">云南咖啡的精品化之路，正在改写中国咖啡的产业格局，其独特的风味和不断提升的品质，正受到越来越多消费者的认可。</p>
+                            <div class="absolute -top-4 -right-4 text-6xl text-accent-green/20">"</div>
+                        </blockquote>
+                        <blockquote class="bg-gradient-to-r from-coffee-brown/5 to-transparent border-l-4 border-accent-green rounded-lg p-6 relative overflow-hidden">
+                            <p class="text-coffee-dark italic">云南咖啡的品质提升有目共睹，尤其是在精品化、精深加工方面取得了显著进展，这为云南咖啡的未来发展奠定了坚实基础。</p>
+                            <div class="absolute -top-4 -right-4 text-6xl text-accent-green/20">"</div>
+                        </blockquote>
+                    </div>
+                </section>
+
+                <section class="mb-16">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-coffee-brown mb-6 pl-4 border-l-6 border-coffee-brown relative">
+                        <i class="fa fa-handshake text-accent-green absolute -left-6 top-1/2 transform -translate-y-1/2"></i>
+                        政策助力，未来可期
+                    </h2>
+                    <p class="text-indent-2 text-coffee-dark text-lg leading-relaxed bg-white/80 rounded-lg p-6 border-l-3 border-accent-gold shadow-sm">
+                        云南咖啡的崛起，离不开政策的扶持。云南省政府大力推动咖啡产业"精品化"、"精深加工"转型，为云南咖啡的品质提升和品牌打造注入了强劲动力。从"原料供应"到"品牌塑造"，云南咖啡正踏上产业升级的新征程，未来值得期待。
+                    </p>
+                </section>
+
+                <section>
+                    <h2 class="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-coffee-brown mb-6 pl-4 border-l-6 border-coffee-brown relative">
+                        <i class="fa fa-lightbulb text-accent-green absolute -left-6 top-1/2 transform -translate-y-1/2"></i>
+                        结语：云南咖啡，未来可期
+                    </h2>
+                    <p class="text-indent-2 text-coffee-dark text-lg leading-relaxed bg-white/80 rounded-lg p-6 border-l-3 border-accent-gold shadow-sm">
+                        B站数据揭示了云南咖啡在年轻群体中的高关注度，也折射出云南咖啡产业蓬勃发展的现状。从数据洞察到口碑声音，我们看到了云南咖啡的潜力与挑战。相信在政策助力、产业升级和消费者认可的多重推动下，云南咖啡必将迎来更加美好的未来，为中国咖啡市场，也为世界咖啡版图，增添一抹独特的云南风味。
+                    </p>
+                </section>
+            </main>
+
+            <!-- 文章底部 -->
+            <footer class="bg-coffee-brown text-white p-6 md:p-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        <p class="text-coffee-cream">☕ 云南咖啡热潮涌动 © 2025</p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-coffee-cream hover:text-accent-gold transition-colors duration-300">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#" class="text-coffee-cream hover:text-accent-gold transition-colors duration-300">
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                        <a href="#" class="text-coffee-cream hover:text-accent-gold transition-colors duration-300">
+                            <i class="fa fa-bilibili"></i>
+                        </a>
+                    </div>
+                </div>
+            </footer>
         </div>
-
-        <h2>引言：当云南咖啡遇见Z世代</h2>
-        <p>云南，这片位于云贵高原的土地，以其得天独厚的自然条件，孕育了风味独特的云南咖啡。近年来，云南咖啡异军突起，成为咖啡界的新宠。从总书记的关注到B站年轻人的热议，云南咖啡正经历着一场前所未有的“破圈”之旅。本文将透过B站数据，为您解读云南咖啡在年轻群体中的关注度，探寻其背后的故事。</p>
-
-        <h2>数据解码：B站青年眼中的云南咖啡</h2>
-
-        <h3>高频词汇，勾勒云南咖啡印象</h3>
-        <img src="https://raw.githubusercontent.com/liqian222/yunnan-coffee-data-news/main/word_frequency_bar_chart.png" alt="词频统计结果的柱状图">
-        <p class="image-caption">图1：B站云南咖啡视频高频词汇统计</p>
-        <div class="chart-explanation">
-            <p><span class="highlight">图1</span> 展示了B站关于云南咖啡视频的高频词汇统计结果。我们可以看到，“风味”、“独特”、“性价比”等词汇排名靠前，这反映了年轻群体对云南咖啡最直观的印象。他们关注云南咖啡的独特风味，也注重其性价比，这为云南咖啡的市场定位和产品开发提供了重要参考。</p>
-        </div>
-
-        <h3>TF-IDF关键词，揭示深度关注点</h3>
-        <img src="https://raw.githubusercontent.com/liqian222/yunnan-coffee-data-news/main/tfidf_bar_chart.png" alt="TF-IDF关键词提取结果的词频统计柱状图">
-        <p class="image-caption">图2：B站云南咖啡视频TF-IDF关键词提取</p>
-        <div class="chart-explanation">
-            <p><span class="highlight">图2</span> 展示了TF-IDF关键词提取结果，这些关键词揭示了年轻群体对云南咖啡更深层次的关注点。与高频词汇相比，“精品化”、“产区”、“产业链”等词汇的出现，表明年轻人不再满足于表面的认知，而是开始关注云南咖啡的品质提升、产区特色以及产业发展。这预示着云南咖啡未来需要更加注重品质打造和产业链升级，以满足年轻消费者日益增长的需求。</p>
-        </div>
-
-        <h3>词云图，视觉化呈现热点</h3>
-        <img src="https://raw.githubusercontent.com/liqian222/yunnan-coffee-data-news/main/word_cloud.png" alt="词云图">
-        <p class="image-caption">图3：B站云南咖啡视频词云图</p>
-        <div class="chart-explanation">
-            <p><span class="highlight">图3</span> 是B站云南咖啡视频的词云图，它以更直观的方式展现了用户讨论的热点。“云南小粒咖啡”、“普洱咖啡”、“咖啡庄园”等词汇的突出显示，反映了年轻人对云南咖啡具体品种和产地的浓厚兴趣。这为云南咖啡的品牌推广和产地营销提供了方向，可以重点打造具有地域特色的咖啡品牌，吸引年轻消费者的关注。</p>
-        </div>
-
-        <h2>口碑两极：爱之深，责之切</h2>
-        <p>云南咖啡在B站引发了热烈讨论，口碑呈现两极分化。正面评价集中于其独特风味，如网友评价"浓而不苦，香而不烈，略带果酸"，认为其是"国货之光"。负面评价则指出部分产品存在过度发酵、香精味过重等问题，期待在风味细节上更上层楼。这种两极评价恰恰反映了消费者对云南咖啡的高关注度和期待值。</p>
-
-        <div class="coffee-quote">
-            <p>云南咖啡的精品化之路，正在改写中国咖啡的产业格局，其独特的风味和不断提升的品质，正受到越来越多消费者的认可。</p>
-        </div>
-
-        <div class="coffee-quote">
-            <p>云南咖啡的品质提升有目共睹，尤其是在精品化、精深加工方面取得了显著进展，这为云南咖啡的未来发展奠定了坚实基础。</p>
-        </div>
-
-        <h2>政策助力，未来可期</h2>
-        <p>云南咖啡的崛起，离不开政策的扶持。云南省政府大力推动咖啡产业“精品化”、“精深加工”转型，为云南咖啡的品质提升和品牌打造注入了强劲动力。从“原料供应”到“品牌塑造”，云南咖啡正踏上产业升级的新征程，未来值得期待。</p>
-
-        <h2>结语：云南咖啡，未来可期</h2>
-        <p>B站数据揭示了云南咖啡在年轻群体中的高关注度，也折射出云南咖啡产业蓬勃发展的现状。从数据洞察到口碑声音，我们看到了云南咖啡的潜力与挑战。相信在政策助力、产业升级和消费者认可的多重推动下，云南咖啡必将迎来更加美好的未来，为中国咖啡市场，也为世界咖啡版图，增添一抹独特的云南风味。</p>
     </div>
 
     <script>
-        window.onscroll = function() {scrollFunction()};
+        // 滚动监听
+        window.addEventListener('scroll', function() {
+            const backToTopBtn = document.getElementById('back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+            }
+        });
 
-        function scrollFunction() {
-            document.getElementById("back-to-top").style.display = 
-                window.pageYOffset > 300 ? "block" : "none";
-        }
+        // 返回顶部按钮
+        document.getElementById('back-to-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
 
-        function topFunction() {
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
+        // 图片懒加载
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            const imgOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px 100px 0px"
+            };
+
+            const imgObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.classList.add('opacity-100');
+                        img.classList.remove('opacity-0');
+                        observer.unobserve(img);
+                    }
+                });
+            }, imgOptions);
+
+            images.forEach(img => {
+                img.classList.add('transition-opacity', 'duration-700', 'opacity-0');
+                imgObserver.observe(img);
+            });
+        });
     </script>
 </body>
 </html>
